@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock</title>
+    <link href="./styles.css" rel="stylesheet" type="text/css" />
+    <link href="./responsive.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <div class="card">
+      <div class="format-switch" data-format="24"></div>
+      <div class='wrapper'>
+        <input class='dot-menu__checkbox' id='dot-menu' type='checkbox'>
+        <label class='dot-menu__label' for='dot-menu'>
+          <span>Menu</span>
+        </label>
+        <div class="menu">
+          <span class="option" style="--delay:0s" >Stopwatch</span>
+          <span class="option" style="--delay:0.1s">Timer</span>
+          <span class="option" style="--delay:0.2s">Analog Clock</span>
+        </div>
+      </div>
+      <h2>Digital Clock</h2>
+      <h1>
+        <span id="time"></span>
+        <p id="meridiem"></p>
+      </h1>
+      <div class="btm_box">
+          <b><span id="day"></span></b>
+        <span>
+          <p id="date"></p>
+        </span>
+      </div>
+    </div>
+    <script src="/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+@media screen and (max-width: 1260px) {
+    .card h1 span{
+        font-size: 70px;
+    }
+    
+}
+
+@media screen and (max-width: 935px) {
+    .card h1 span{
+        font-size: calc(50px + 0.38vw);
+    }
+    .card h2, .btm_box{
+        font-size: calc(1rem + 0.39vw);
+    }
+    
+}
