@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock</title>
+    <link href="./styles.css" rel="stylesheet" type="text/css" />
+    <link href="./responsive.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="card" id="digital">
+      <div class="wrapper">
+        <input class="dot-menu__checkbox" id="dot-menu" type="checkbox" />
+        <label class="dot-menu__label" for="dot-menu">
+          <span></span>
+          <!--kept here for dot menu's design-->
+        </label>
+        <div class="menu">
+          <a href="./index.html" class="option" style="--delay: 0s"
+            >Digital Clock</a
+          >
+          <a href="./timer.html" class="option" style="--delay: 0.1s">Timer</a>
+          <a href="./stopwatch.html" class="option" style="--delay: 0.2s"
+            >Stopwatch</a
+          >
+        </div>
+      </div>
+      <h2>Analog Clock</h2>
+      <div class="circle">
+        <div class="hoursContainer">
+          <ul class="hourNums">
+            <li class="numberBox"><div>3</div></li>
+            <li class="numberBox"><div>6</div></li>
+            <li class="numberBox"><div>9</div></li>
+            <li class="numberBox"><div>12</div></li>
+          </ul>
+          <ul class="hourMarks">
+            <li><span class="mark"></span></li>
+            <li><span class="mark"></span></li>
+            <li><span class="mark"></span></li>
+            <li><span class="mark"></span></li>
+            <li><span class="mark"></span></li>
+            <li><span class="mark"></span></li>
+            <li><span class="mark"></span></li>
+            <li><span class="mark"></span></li>
+          </ul>
+          <ul class="midlines">
+            <li><div class="line"></div></li>
+            <li><div class="line"></div></li>
+            <li><div class="line"></div></li>
+            <li><div class="line"></div></li>
+          </ul>
+        </div>
+        <div class="needlesContainer">
+          <div class="hands" id="hr_hand"></div>
+          <div class="hands" id="min_hand"></div>
+          <div class="hands" id="sec_hand"></div>
+        </div>
+        <div class="centerDot"></div>
+      </div>
+    </div>
+    <audio id="myAudio">
+      <source src="./wall-clock-ticks-quartz-clock-25480.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+    <script>
+      function setClock() {
+        let a = new Date();
+        let h = a.getHours();
+        let m = a.getMinutes();
+        let s = a.getSeconds();
+        hvalue = h * 30 + (m * 30) / 60;
+        mvalue = m * 6;
+        svalue = s * 6;
+        document.getElementById("hr_hand").style.transform =
+          "rotate(" + hvalue + "deg)";
+        document.getElementById("min_hand").style.transform =
+          "rotate(" + mvalue + "deg)";
+        document.getElementById("sec_hand").style.transform =
+          "rotate(" + svalue + "deg)";
+      }
+      setInterval(setClock, 1000);
+      document.getElementById("myAudio").play();
+    </script>
+  </body>
+</html>

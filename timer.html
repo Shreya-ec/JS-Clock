@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock</title>
+    <link href="./styles.css" rel="stylesheet" type="text/css" />
+    <link href="./responsive.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="card" id="digital">
+      <div class="wrapper">
+        <input class="dot-menu__checkbox" id="dot-menu" type="checkbox" />
+        <label class="dot-menu__label" for="dot-menu">
+          <span></span>
+          <!--kept here for dot menu's design-->
+        </label>
+        <div class="menu">
+          <a href="./index.html" class="option" style="--delay: 0s"
+            >Digital Clock</a
+          >
+          <a href="./analog.html" class="option" style="--delay: 0.1s"
+            >Analog Clock</a
+          >
+          <a href="./stopwatch.html" class="option" style="--delay: 0.2s"
+            >Stopwatch</a
+          >
+        </div>
+      </div>
+      <h2>Timer</h2>
+      <h1>
+        <input
+          type="text"
+          class="input"
+          maxlength="2"
+          id="hours"
+          placeholder="00"
+        />
+        <span>:</span>
+        <input
+          type="text"
+          class="input"
+          maxlength="2"
+          id="minutes"
+          placeholder="00"
+        />
+        <span>:</span>
+        <input
+          type="text"
+          class="input"
+          maxlength="2"
+          id="seconds"
+          placeholder="00"
+        />
+      </h1>
+      <div class="btm_flex_box">
+        <button class="btn" id="start">Start</button>
+        <button class="btn" id="pause">Pause</button>
+        <button class="btn" id="reset">Reset</button>
+      </div>
+    </div>
+
+    <script>
+      // let hours = document.getElementById("hours").value; value of hours remains what it was at the time of its initialization, and it doesn't get updated at button  click.
+      let hours = document.getElementById("hours");
+      let mins = document.getElementById("minutes");
+      let sec = document.getElementById("seconds");
+      let interval = null;
+
+      // start logic
+      let startbtn = document.getElementById("start");
+      startbtn.addEventListener("click", () => {
+        document.getElementsByClassName("input").disabled = "true";
+        let h = Number(hours.value);
+        let m = Number(mins.value);
+        let s = Number(sec.value);
+        if (
+          !Number.isInteger(h) ||
+          !Number.isInteger(m) ||
+          !Number.isInteger(s)
+        ) {
+          alert("Please enter whole numbers only!");
+          setZero();
+        } else if (h == 0 && m == 0 && s == 0) {
+          alert("Provide time atleast (-_-)");
+        } else if (h >= 24 || m >= 60 || s >= 60) {
+          alert(
+            "Hours should be less than 24 while minutes & seconds should be less than 60."
+          );
+          setZero();
+        } else if (h < 0 || m < 0 || s < 0) {
+          alert("No negativity here!");
+          setZero();
+        } else if (h < 24 && m < 60 && s < 60) {
+          setTimer(s, m, h);
+        }
+      });
+      function setTimer(s, m, h) {
+        if (interval!=null){
+          clearInterval(interval);
+        }
+        interval = setInterval(() => {
+          if (s != 0) {
+            s--;
+          } else if (s == 0) {
+            if (m == 0) {
+              if (h == 0) {
+                document.getElementsByClassName("input").disabled = "false";
+                alert("DONE!");
+                clearInterval(interval);
+              } else if (h != 0) {
+                h--;
+                s = 59;
+                m = 59;
+              }
+            } else if (m != 0) {
+              m--;
+              s = 59;
+            }
+          }
+
+          hours.value = h < 10 ? "0" + h : h;
+          mins.value = m < 10 ? "0" + m : m;
+          sec.value = s < 10 ? "0" + s : s;
+        }, 1000);
+      }
+
+      // pause logic
+      let pausebtn = document.getElementById("pause");
+      pausebtn.addEventListener("click", () => {
+        clearInterval(interval);
+      });
+
+      //reset logic
+      let resetbtn = document.getElementById("reset");
+      resetbtn.addEventListener("click", () => {
+        clearInterval(interval);
+        setZero();
+      });
+
+      function setZero() {
+        h = 0;
+        m = 0;
+        s = 0;
+        hours.value = null;
+        mins.value = null;
+        sec.value = null;
+      }
+    </script>
+  </body>
+</html>

@@ -77,5 +77,6 @@ function setDate() {
   document.getElementById("time").innerText = h + ":" + m + ":" + s;
   document.getElementById("day").innerText = day;
   document.getElementById("date").innerText = month + " " + d + ", " + year;
+
 }
 setInterval(setDate, 1000);

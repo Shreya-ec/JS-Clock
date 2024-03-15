@@ -8,17 +8,18 @@
     <link href="./responsive.css" rel="stylesheet" type="text/css"/>
   </head>
   <body>
-    <div class="card">
+
+    <div class="card" id="digital">
       <div class="format-switch" data-format="24"></div>
       <div class='wrapper'>
         <input class='dot-menu__checkbox' id='dot-menu' type='checkbox'>
         <label class='dot-menu__label' for='dot-menu'>
-          <span>Menu</span>
+          <span></span> <!--kept here for dot menu's design-->
         </label>
         <div class="menu">
-          <span class="option" style="--delay:0s" >Stopwatch</span>
-          <span class="option" style="--delay:0.1s">Timer</span>
-          <span class="option" style="--delay:0.2s">Analog Clock</span>
+          <a href="./analog.html" class="option" style="--delay:0s" >Analog Clock</a>
+          <a href="./timer.html" class="option" style="--delay:0.1s" >Timer</a>
+          <a href="./stopwatch.html" class="option" style="--delay:0.2s" >Stopwatch</a>
         </div>
       </div>
       <h2>Digital Clock</h2>
@@ -33,6 +34,7 @@
         </span>
       </div>
     </div>
-    <script src="/script.js"></script>
+
+    <script src="./script.js"></script>
   </body>
 </html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock</title>
+    <link href="./styles.css" rel="stylesheet" type="text/css" />
+    <link href="./responsive.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="card" id="digital">
+      <div class="wrapper">
+        <input class="dot-menu__checkbox" id="dot-menu" type="checkbox" />
+        <label class="dot-menu__label" for="dot-menu">
+          <span></span>
+          <!--kept here for dot menu's design-->
+        </label>
+        <div class="menu">
+          <a href="./index.html" class="option" style="--delay: 0s"
+            >Digital Clock</a
+          >
+          <a href="./analog.html" class="option" style="--delay: 0.1s"
+            >Analog Clock</a
+          >
+          <a href="./timer.html" class="option" style="--delay: 0.2s">Timer</a>
+        </div>
+      </div>
+      <h2>Stopwatch</h2>
+      <h1>
+        <span id="time">00:00:00:00</span>
+      </h1>
+      <div class="btm_flex_box">
+        <button class="btn" id="start">Start</button>
+        <button class="btn" id="stop">Stop</button>
+        <button class="btn" id="reset">Reset</button>
+      </div>
+    </div>
+
+    <script>
+      let time = document.getElementById("time");
+      let startbtn = document.getElementById("start");
+      let stopbtn = document.getElementById("stop");
+      let resetbtn = document.getElementById("reset");
+      let interval = null;
+
+      let hr = 0;  //these are for counts and increment only
+      let min = 0;
+      let sec = 0;
+      let msec = 0;
+
+      function startTime() {
+        msec++;
+        if (msec == 100) {
+          msec = 0;
+          sec++;
+          if (sec == 60) {
+            sec = 0;
+            min++;
+            if (min == 60) {
+              min = 0;
+              hr++;
+            }
+          }
+        }
+
+        let hour = (hr<10) ? "0" + hr : hr;             //these are for the time format
+        let minute = (min<10) ? "0" + min : min;
+        let seconds = (sec<10) ? "0" + sec : sec;
+        let millisec = (msec<10) ? "0" + msec : msec;
+
+        time.innerText = `${hour}:${minute}:${seconds}:${millisec}`;
+      }
+
+      startbtn.addEventListener("click", () => {
+        if(interval!==null){ clearInterval(interval)};
+        // hr = min = sec = msec = 0;
+        interval = setInterval(startTime, 10);
+      });
+
+      stopbtn.addEventListener("click", ()=>{
+        clearInterval(interval);
+      });
+
+      resetbtn.addEventListener("click", ()=>{
+        clearInterval(interval);
+        time.innerText = "00:00:00:00"
+        hr = min = sec = msec = 0;
+      });
+
+    </script>
+  </body>
+</html>
