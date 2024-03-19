@@ -268,13 +268,13 @@ body {
 
 /* TIMER */
 .input {
-  height: 100px;
-  width: 120px;
+  height: 6.2rem;
+  width: 7.5rem;
   border-radius: 10px;
   background-color: var(--clr-3);
   border: 1px solid var(--clr-3);
   color: var(--clr-6);
-  font-size: 90px;
+  font-size: 6rem;
   text-align: center;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
