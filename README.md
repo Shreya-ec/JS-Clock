@@ -6,7 +6,7 @@ This repository contains a collection of simple yet elegant web applications bui
 
 - **Clock:** A digital clock displaying the current time in both 12hr and 24hr format.
 - **Stopwatch:** A stopwatch for timing events or activities accurately.
-- **Timer:** Set a timer for any duration, with optional sound notification. ##Most Dynamic JS Timer Ever##
+- **Timer:** Set a timer for any duration, with optional sound notification.
 - **Analog Clock:** A classic analog clock displaying the current time.
 
 ## Demo
