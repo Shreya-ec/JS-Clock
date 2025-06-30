@@ -10,7 +10,7 @@ This repository contains a collection of simple yet elegant web applications bui
 - **Analog Clock:** A classic analog clock displaying the current time.
 
 ## Demo
-[![demo-video](./assets/clock-thumbnail.png)](./assets/js_clock_demo.mp4)
+[![demo-video](./assets/demo-gif.gif)](./assets/js_clock_demo.mp4)
 
 ## Usage
 
