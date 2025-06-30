@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clock</title>
-    <link href="./styles.css" rel="stylesheet" type="text/css" />
-    <link href="./responsive.css" rel="stylesheet" type="text/css" />
+    <link href="./styles/styles.css" rel="stylesheet" type="text/css" />
+    <link href="./styles/responsive.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div class="card" id="digital">
@@ -106,7 +106,26 @@
             if (m == 0) {
               if (h == 0) {
                 document.getElementsByClassName("input").disabled = "false";
-                alert("DONE!");
+
+ const alarm = new Audio('./assets/electronic-alarm-clock-151927.mp3');
+  alarm.loop = true;
+
+  // Only show alert AFTER audio starts
+  alarm.play()
+    .then(() => {
+      alert("DONE!");   // wait till user clicks OK
+      alarm.pause();    // stop sound
+      alarm.currentTime = 0;
+      clearInterval(interval);
+    })
+    .catch((e) => {
+      console.warn("Autoplay failed:", e);
+      alert("DONE!");   // fallback: show alert anyway
+      clearInterval(interval);
+    });
+    
+                // playSound('./assets/electronic-alarm-clock-151927.mp3');
+                // alert("DONE!");
                 clearInterval(interval);
               } else if (h != 0) {
                 h--;
@@ -145,6 +164,14 @@
         hours.value = null;
         mins.value = null;
         sec.value = null;
+      }
+
+      function playSound(url) {
+         const audio = new Audio(url);
+    audio.currentTime = 0;
+    audio.play().catch((e) => {
+      console.warn("Autoplay failed or file not found:", e);
+    });
       }
     </script>
   </body>

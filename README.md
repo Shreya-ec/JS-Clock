@@ -9,6 +9,9 @@ This repository contains a collection of simple yet elegant web applications bui
 - **Timer:** Set a timer for any duration, with optional sound notification. ##Most Dynamic JS Timer Ever##
 - **Analog Clock:** A classic analog clock displaying the current time.
 
+## Demo
+[![demo-video](./assets/clock-thumbnail.png)](./assets/js_clock_demo.mp4)
+
 ## Usage
 
 To use any of these applications in your project, simply clone the repository and integrate the respective HTML, CSS, and JavaScript files into your project. No external libraries or CDNs such as Bootstrap are required.
